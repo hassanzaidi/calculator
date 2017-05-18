@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  	<meta charset="utf-8" />
+   <!-- Always force latest IE rendering engine (even in intranet) & Chrome Frame -->
+   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+   <!-- Mobile viewport optimized: h5bp.com/viewport -->
+   <meta name="viewport" content="width=device-width">
+
+   <title>Bootmetro - Calculator</title>
+
+   <meta name="robots" content="noindex, nofollow">
+   <meta name="description" content="BootMetro : Simple and complete web UI framework to create web apps with Windows 8 Metro user interface." />
+   <meta name="keywords" content="bootmetro, modern ui, modern-ui, metro, metroui, metro-ui, metro ui, windows 8, metro style, bootstrap, framework, web framework, css, html" />
+   <meta name="author" content="AozoraLabs by Marcello Palmitessa"/>
+   <link rel="publisher" href="https://plus.google.com/117689250782136016574">
+
+   <!-- remove or comment this line if you want to use the local fonts -->
+   <link href='http://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700' rel='stylesheet' type='text/css'>
+
+   <link rel="stylesheet" type="text/css" href="css/bootmetro.css">
+   <link rel="stylesheet" type="text/css" href="css/bootmetro-responsive.css">
+   <link rel="stylesheet" type="text/css" href="css/bootmetro-icons.css">
+   <link rel="stylesheet" type="text/css" href="css/bootmetro-ui-light.css">
+   <link rel="stylesheet" type="text/css" href="css/datepicker.css">
+
+   <!--  these two css are to use only for documentation -->
+   <link rel="stylesheet" type="text/css" href="css/demo.css">
+
+   <!-- Le fav and touch icons -->
+   <link rel="shortcut icon" href="ico/favicon.ico">
+   <link rel="apple-touch-icon-precomposed" sizes="144x144" href="ico/apple-touch-icon-144-precomposed.png">
+   <link rel="apple-touch-icon-precomposed" sizes="114x114" href="ico/apple-touch-icon-114-precomposed.png">
+   <link rel="apple-touch-icon-precomposed" sizes="72x72" href="ico/apple-touch-icon-72-precomposed.png">
+   <link rel="apple-touch-icon-precomposed" href="ico/apple-touch-icon-57-precomposed.png">
+  
+   <!-- All JavaScript at the bottom, except for Modernizr and Respond.
+      Modernizr enables HTML5 elements & feature detects; Respond is a polyfill for min/max-width CSS3 Media Queries
+      For optimal performance, use a custom Modernizr build: www.modernizr.com/download/ -->
+   <script src="js/modernizr-2.6.2.min.js"></script>
+   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+  </head>
+  <body>
+
+  <div ng-app="Apply">
+  <div ng-controller="Contra"> 
+    <div class="container">
+      <div class="hero-unit row">
+        <center>
+          <h1 class="lead">
+            <p class="text-info">Arithmetic Calculations</p>
+          </h1>
+          <div class="span10">
+            <div class="win-commandlayout">
+                <button class="win-command">
+                  <span class="win-commandicon win-commandring icon-plus"></span>
+                  <span class="win-label">Addition</span>
+                </button>
+         
+                <hr class="win-command" />
+                
+                <button class="win-command">
+                  <span class="win-commandicon win-commandring icon-minus"></span>
+                  <span class="win-label">Subraction</span>
+                </button>
+                
+                <hr class="win-command" />
+                
+                <button class="win-command" >
+                  <span class="win-commandicon win-commandring icon-cross"></span>
+                  <span class="win-label">Multiplication</span>
+                </button>
+
+                <hr class="win-command" />
+                
+                <button class="win-command">
+                  <span class="win-commandicon win-commandring icon-bolt"></span>
+                  <span class="win-label">Division</span>
+                </button>
+            </div>
+          </div>
+          </center>
+      </div>
+ 	  </div>
+
+    <div class="container">
+      <div class="offset3">
+      <form class="form-horizontal">
+        
+        <div class="control-group">
+           <label class="control-label" for="inputEmail">Enter value of P =</label>
+            <div class="controls">
+              <input type="number" id="inputEmail" ng-model="p">
+            </div>
+        </div>
+
+        <div class="control-group">
+            <label class="control-label" for="inputEmail">Select Operation</label>
+            <div class="controls">
+              <select ng-model="operation">
+                <option>Addition</option>
+                <option>Subraction</option>
+                <option>Multiplication</option>
+                <option>Division</option>
+              </select>
+            </div>
+        </div>
+
+        <div class="control-group">
+          <label class="control-label" for="inputEmail">Enter value of Q =</label>
+            <div class="controls">
+              <input type="number" id="inputEmail" ng-model="q">
+            </div>
+        </div>
+
+        <div class="control-group">
+            <div class="controls">
+              <button class="btn btn-info" ng-click="caluclate()">CALUCLATE</button>
+            </div>
+        </div>
+
+      </form>
+      </div>
+    </div>
+
+    <br /><br/>
+    
+    <div class="container">
+      <div class="offset2">
+        <form class="form-horizontal">
+          <div class="control-group">
+            <label class="control-label" for="inputEmail">Result =</label>
+              <div class="controls">
+                <input type="number" class="span5" value="{{ resty }}" readonly="">
+              </div>
+          </div>
+        </form>
+      </div>
+    </div>
+</div>
+</div>    
+
+<script type="text/javascript">
+    angular.module('Apply', []).controller('Contra', function($scope) 
+    {
+        var x=0;
+        $scope.caluclate = function() 
+        {
+            if ($scope.operation == 'Addition') 
+            {
+                x= $scope.p + $scope.q;
+            }
+            if ($scope.operation == 'Subraction') 
+            {
+                x= $scope.p - $scope.q;
+            }
+            if ($scope.operation == 'Multiplication') {
+                x= $scope.p * $scope.q;
+            }
+            if ($scope.operation == 'Division') {
+                x= $scope.p / $scope.q;
+            }
+            $scope.resty = x;
+        };
+    });
+ </script>
+
+   <script type="text/javascript" src="js/min/bootstrap.min.js"></script>
+   <script type="text/javascript" src="js/bootmetro-panorama.js"></script>
+   <script type="text/javascript" src="js/bootmetro-pivot.js"></script>
+   <script type="text/javascript" src="js/bootmetro-charms.js"></script>
+   <script type="text/javascript" src="js/bootstrap-datepicker.js"></script>
+
+   <script type="text/javascript" src="js/jquery.mousewheel.min.js"></script>
+   <script type="text/javascript" src="js/jquery.touchSwipe.min.js"></script>
+
+   <script type="text/javascript" src="js/holder.js"></script>
+   <!--<script type="text/javascript" src="./assets/js/perfect-scrollbar.with-mousewheel.min.js"></script>-->
+   <script type="text/javascript" src="js/demo.js"></script> 
+   
+  </body>
+</html>
